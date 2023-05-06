@@ -1,0 +1,15 @@
+.navbar{
+    background-color: aqua;
+}
+.menu {
+    text-align: right;
+}
+.menu li{
+    display: inline;
+    margin: 10px;
+}
+.menu a{
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 30px;
+}
