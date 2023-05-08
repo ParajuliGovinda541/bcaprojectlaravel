@@ -34,10 +34,11 @@ class CategoryController extends Controller
         
 
         Category::create($data);
-        return redirect(route('category.index'));
+        return redirect(route('category.index'))->with('success','Category created sucessfully!');
 
 
     }
+
 
     public function edit($id)
     {
@@ -54,7 +55,7 @@ class CategoryController extends Controller
 
         $category= Category::find($id);
         $category->update($data);
-        return redirect(route('category.index'));
+        return redirect(route('category.index'))->with('success','Category updated sucessfully!');
 
     }
 
@@ -63,7 +64,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect(route('category.index'));
+        return redirect(route('category.index'))->with('success','Category deleted sucessfully!');
 
     }
 }

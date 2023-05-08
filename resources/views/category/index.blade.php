@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
+
+@include('layouts.message')
     <h2 class="font-bold text-4xl text-blue-700" >Categories</h2>
-    <hr class="h-2 mb-4 bg-blue-200">
+    <hr class="h-1 bg-blue-200">
 
 <div class="my-4 text-right px-10">
     <a class="bg-amber-400 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-amber-300"href="{{route('category.create')}}">Add Category</a>
