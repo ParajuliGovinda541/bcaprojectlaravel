@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NoticeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,10 +46,27 @@ Route::get('/category/{id}/destroy',[CategoryController::class,'destroy'])->name
 // end of route category
 
 
+// Route of Notices
+
+Route::get('/notice',[NoticeController::class,'index'])->name('notice.index');
+route::get('/notice/create',[NoticeController::class,'create'])->name('notice.create');
+Route::post('/notice',[NoticeController::class,'store'])->name('notice.store');
+route::get('/notice/{id}/edit',[NoticeController::class,'edit'])->name('notice.edit');
+route::post('/notice/{id}/update',[NoticeController::class,'update'])->name('notice.update');
+// Route::get('/category/{id}/destroy',[NoticeController::class,'destroy'])->name('notice.destroy');
+
+
+
+
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+
+
 });
 
 

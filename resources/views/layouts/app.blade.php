@@ -32,7 +32,7 @@
                 <div class="w-56 h-screen bg-gray-200 shadow-lg shadow-red-300">
                     <a href="" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Dashboard</a>
                     <a href="{{route('category.index')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Categories</a>
-                    <a href="" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Manage Admin</a>
+                    <a href="{{route('notice.index')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Notices</a>
                     <a href="" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Feedbacks</a>
                 </div>
             </div>
