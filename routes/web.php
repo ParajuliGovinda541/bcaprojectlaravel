@@ -53,7 +53,9 @@ route::get('/notice/create',[NoticeController::class,'create'])->name('notice.cr
 Route::post('/notice',[NoticeController::class,'store'])->name('notice.store');
 route::get('/notice/{id}/edit',[NoticeController::class,'edit'])->name('notice.edit');
 route::post('/notice/{id}/update',[NoticeController::class,'update'])->name('notice.update');
-// Route::get('/category/{id}/destroy',[NoticeController::class,'destroy'])->name('notice.destroy');
+Route::get('/category/{id}/destroy',[NoticeController::class,'destroy'])->name('notice.destroy');
+
+// end of route notice
 
 
 
