@@ -3,6 +3,8 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\GalleryController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,14 +55,20 @@ route::get('/notice/create',[NoticeController::class,'create'])->name('notice.cr
 Route::post('/notice',[NoticeController::class,'store'])->name('notice.store');
 route::get('/notice/{id}/edit',[NoticeController::class,'edit'])->name('notice.edit');
 route::post('/notice/{id}/update',[NoticeController::class,'update'])->name('notice.update');
-Route::get('/category/{id}/destroy',[NoticeController::class,'destroy'])->name('notice.destroy');
-
-// end of route notice
+Route::get('/notice/{id}/destroy',[NoticeController::class,'destroy'])->name('notice.destroy');
 
 
 
+//route for gallery controller
+Route::get('/gallery',[GalleryController::class,'index'])->name('gallery.index');
+route::get('/gallery/create',[GalleryController::class,'create'])->name('gallery.create');
+Route::post('/gallery',[GalleryController::class,'store'])->name('gallery.store');
+route::get('/gallery/{id}/edit',[GalleryController::class,'edit'])->name('gallery.edit');
+route::post('/gallery/{id}/update',[GalleryController::class,'update'])->name('gallery.update');
+Route::get('/gallery/{id}/destroy',[GalleryController::class,'destroy'])->name('gallery.destroy');
 
 
+// end of route gallery
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
