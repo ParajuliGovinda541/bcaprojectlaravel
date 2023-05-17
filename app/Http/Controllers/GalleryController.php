@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use Illuminate\Auth\Access\Events\GateEvaluated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class GalleryController extends Controller
 {
@@ -32,8 +34,25 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+
+            'title'=>'required',
+            'photopath'=>'required|image|mimes:jpeg,png,jpg'
+        ]);
+
+        if($request->hasFile('photopath'))
+        {
+            $image=$request->file('photopath');
+            $name= time().'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/images/gallery');
+            $image ->move($destinationPath,$name);
+            $data['photopath']=$name;            
+        }
+
+        Gallery::create($data);
+        return redirect(route('gallery.index'))->with('success','Gallery created sucessfully!');
     }
+
 
     /**
      * Display the specified resource.
@@ -46,24 +65,52 @@ class GalleryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Gallery $gallery)
+    public function edit ($id)
     {
-        //
+        $gallery=Gallery::find($id);
+        return view('gallery.edit',compact('gallery'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Gallery $gallery)
+    public function update(Request $request, $id)
     {
-        //
+
+       
+        $data= $request->validate([
+            'title'=>'required',
+            'photopath'=>'sometimes|image',
+
+
+
+        ]);
+        $oldgallery=Gallery::find($id);
+       
+        if($request->hasFile('photopath')){
+            $image=$request->file('photopath');
+            $name= uniqid().'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/images/gallery');
+            $image ->move($destinationPath,$name);
+            
+            File::delete(public_path('images/gallery/'.$oldgallery->photopath));
+
+         
+            $data['photopath']=$name;            
+        }
+
+        $gallery= Gallery::find($id);
+        $gallery->update($data);
+        return redirect(route('gallery.index'))->with('success','Gallery updated sucessfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Gallery $gallery)
+    public function destroy($id)
     {
-        //
+        $gallery = Gallery::find($id);
+        $gallery->delete();
+        return redirect(route('gallery.index'))->with('success','Image deleted sucessfully!');
     }
 }

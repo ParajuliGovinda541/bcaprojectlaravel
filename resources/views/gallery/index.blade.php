@@ -13,12 +13,15 @@
             <th>S.N</th>
             <th>Image</th>
             <th>PhotoPath</th>
+            <th>Action</th>
+
         </thead>
         <tbody>
             @foreach($galleries as $gallery)
             <tr>
-                <td>{{$gallery->priority}}</td>
-                <td>{{$gallery->name}}</td>
+            <td>{{$gallery->id}}</td>
+            <td>{{$gallery->title}}</td>
+            <td><img  class= "w-20" src="{{asset('images/gallery/'.$gallery->photopath)}}" alt ="{{asset('images/gallery/'.$gallery->photopath)}}"></td>
                 <td>
                     <a href="{{route('gallery.edit',$gallery->id)}}"class="bg-blue-600 px-2 py-1 rounded text-white hover:shadow-blue-600">Edit</a>
                     <a onclick="return confirm('Are you sure want to delete ?')" href="{{route('gallery.destroy',$gallery->id)}}"class="bg-red-600 px-2 py-1 rounded text-white hover:shadow-blue-400">Delete</a>
