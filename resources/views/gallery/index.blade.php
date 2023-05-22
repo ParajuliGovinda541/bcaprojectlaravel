@@ -19,7 +19,7 @@
         <tbody>
             @foreach($galleries as $gallery)
             <tr>
-            <td>{{$gallery->id}}</td>
+            <td>{{$loop->iteration}}</td>
             <td>{{$gallery->title}}</td>
             <td><img  class= "w-20" src="{{asset('images/gallery/'.$gallery->photopath)}}" alt ="{{asset('images/gallery/'.$gallery->photopath)}}"></td>
                 <td>

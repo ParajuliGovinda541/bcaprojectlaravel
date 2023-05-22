@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\ProductController;
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
@@ -69,6 +70,28 @@ Route::get('/gallery/{id}/destroy',[GalleryController::class,'destroy'])->name('
 
 
 // end of route gallery
+
+
+
+//route for product controller
+Route::get('/product',[ProductController::class,'index'])->name('product.index');
+route::get('/product/create',[ProductController::class,'create'])->name('product.create');
+Route::post('/product',[ProductController::class,'store'])->name('product.store');
+route::get('/product/{id}/edit',[ProductController::class,'edit'])->name('product.edit');
+route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
+Route::get('product/{id}/destroy',[ProductController::class,'destroy'])->name('product.destroy');
+
+
+// end of route product
+
+
+
+
+
+
+
+
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

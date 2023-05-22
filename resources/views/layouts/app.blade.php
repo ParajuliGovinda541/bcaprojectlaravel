@@ -33,6 +33,8 @@
                     <a href="" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Dashboard</a>
                     <a href="{{route('category.index')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Categories</a>
                     <a href="{{route('notice.index')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Notices</a>
+                    <a href="{{route('product.index')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Product</a>
+                    
                     <a href="{{route('gallery.index')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Gallery</a>
 
                 </div>
