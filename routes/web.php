@@ -39,6 +39,9 @@ Route::middleware('auth')->group(function () {
 
 // Route of category
 
+Route::middleware('isadmin')->group(function () {
+
+
 route::get('/category',[CategoryController::class,'index'])->name('category.index');
 route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
 Route::post('/category',[CategoryController::class,'store'])->name('category.store');
@@ -47,7 +50,7 @@ route::post('/category/{id}/update',[CategoryController::class,'update'])->name(
 Route::get('/category/{id}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
 
 // end of route category
-
+});
 
 // Route of Notices
 
@@ -107,3 +110,4 @@ Route::get('product/{id}/destroy',[ProductController::class,'destroy'])->name('p
 
 
 require __DIR__.'/auth.php';
+

@@ -28,14 +28,25 @@
     </head>
     <body class="font-sans antialiased">
         <div class="flex">
+
+            
+        
             <div class="w-56 h-screen">
                 <div class="w-56 h-screen bg-gray-200 shadow-lg shadow-red-300">
-                    <a href="" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Dashboard</a>
+
+
+                    <a href="{{route('dashboard')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Dashboard</a>
                     <a href="{{route('category.index')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Categories</a>
                     <a href="{{route('notice.index')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Notices</a>
                     <a href="{{route('product.index')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Product</a>
-                    
                     <a href="{{route('gallery.index')}}" class="text-x1 font-bold border b-2 bordder-blue 500 block m1-4 px-2 py-1 ">Gallery</a>
+
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <input class="bg-amber-400 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-amber-300" type="submit" value="Logout">
+                        
+
+                    </form>
 
                 </div>
             </div>
