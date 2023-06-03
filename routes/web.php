@@ -1,10 +1,15 @@
 <?php
+
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UserController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -19,15 +24,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/',[PagesController::class,'home'])->name('home');
+Route::get('/viewproduct/{product}',[PagesController::class,'viewproduct'])->name('viewproduct');
+
+
+Route::get('/userlogin',[PagesController::class,'userlogin'])->name('userlogin');
+
+Route::get('/userregister',[UserController::class,'userregister'])->name('user.register');
+Route::post('/userregister',[UserController::class,'userstore'])->name('user.register');
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified','isadmin'])->name('dashboard');
 
 
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/mycart',[CartController::class,'index'])->name('cart.index');
+    Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store'); 
+
+        
+    
+});
 
 
 
@@ -39,7 +65,7 @@ Route::middleware('auth')->group(function () {
 
 // Route of category
 
-Route::middleware('isadmin')->group(function () {
+Route::middleware('auth')->group(function () {
 
 
 route::get('/category',[CategoryController::class,'index'])->name('category.index');

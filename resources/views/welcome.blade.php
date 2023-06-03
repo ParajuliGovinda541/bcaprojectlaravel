@@ -1,41 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+@extends('master')
+@section('content')
 
 
-    <style>
-        .navbar{
-            background-color: aqua;
-        }
-        .menu {
-            text-align: right;
-        }
-        .menu li{
-            display: inline;
-            margin: 10px;
-        }
-        .menu a{
-            text-decoration: none;
-            color: aliceblue;
-            font-size: 30px;
-        }
-    </style>
-</head>
-<body>
- <body>
-        <nav class="navbar">
-            <ul class="menu">
-                <li><a href="">Dashboard</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">Login</a></li>
+<h2 class="font-bold text-4xl text-center my-5">Our Products</h2>
 
-            </ul>
-        </nav>
- </body>
-</body>
-</html>
+    
+
+        <div class="grid grid-cols-4 gap-10 px-24 mb-10">
+            @foreach ($products as $product)
+<a href="{{route('viewproduct',$product->id)}}">
+            <div class="bg-gray-100 rounded-lg shadow-lg relative">
+                <img src="{{asset('images/product/'.$product->photopath)}}" alt="" class="w-full h-72 object-cover rounded-t-lg">
+                <div class="p-2">
+                    <p class="font-bold text-2xl">{{$product->name}}</p>
+                    <p class="font-bold text-2xl">
+                        @if ($product->price !='')
+                        <span class="line-through text-gray-500 text-xl">Rs.{{$product->oldprice}}</span>Rs.{{$product->price}}
+                            
+                    </p>
+                    @endif
+
+                </div>
+
+                @if ($product->oldprice !='')
+                @php
+                    $discount=($product->oldprice -$product->price)/$product->oldprice*100;
+                @endphp
+                
+                <p class="absolute top-1 right-1 bg-blue-600 text-white rounded-lg px-4 py-1" >
+                    {{$discount}}% off
+
+                </p>
+                @endif
+
+
+            </div>
+        </a>
+            @endforeach
+
+
+
+            </div>
+
+            
+            <div class="mx-24 my-10">
+                {{$products->links()}}
+            </div>
+
+@endsection

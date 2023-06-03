@@ -19,6 +19,10 @@
     @error('price')
     <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
 @enderror
+<input type="text" placeholder="Old Price" name="oldprice" class="w-full rounded-lg border-gray-300 my-2"value="{{$products->oldprice}}">
+@error('oldprice')
+<p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+@enderror
 <img  class= "w-20" src="{{asset('images/product/'.$products->photopath)}}" alt ="">
     <input type="file" name="photopath" class="w-full rounded-lg border-gray-300 my-2"value="{{$products->photopath}}">
     @error('photopath')

@@ -18,6 +18,7 @@
             <th>Image</th>
             <th>Description</th>
             <th>Price</th>
+            <th> Old Price</th>
             <th>Stock</th>
             <th>Category</th>
             <th>Action</th>
@@ -30,6 +31,7 @@
                 <td><img  class= "w-20" src="{{asset('images/product/'.$product->photopath)}}" alt =""></td>
                 <td>{{$product->description}}</td>
                 <td>{{$product->price}}</td>
+                <td>{{$product->oldprice}}</td>
                 <td>{{$product->stock}}</td>
                 <td>{{$product->category_name}}</td>
 

@@ -20,6 +20,11 @@
     <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
 @enderror
 
+<input type="text" placeholder="Old Price" name="oldprice" class="w-full rounded-lg border-gray-300 my-2"value="{{old('oldprice')}}">
+@error('oldprice')
+<p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+@enderror
+
     <input type="file" name="photopath" class="w-full rounded-lg border-gray-300 my-2"value="{{old('photopath')}}">
     @error('photopath')
     <p class="text-red-600 text-xs -mt-2">{{$message}}</p>

@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-    <nav class="navbar">
+    {{-- <nav class="navbar">
         <ul class="menu">
         <li>Home</li>
         <li>Gallery</li>
@@ -15,5 +15,5 @@
     <h1>This is home page</h1>
     <h1>This is home page</h1>
     <h1>This is home page</h1>
-<img src="{{asset('image/image.png')}}">   
+<img src="{{asset('image/image.png')}}">    --}}
 @endsection

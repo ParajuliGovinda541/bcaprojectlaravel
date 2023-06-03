@@ -43,6 +43,8 @@ class ProductController extends Controller
             'name'=>'required',
             'stock'=>'required|numeric',
             'price'=>'required|numeric',
+            'oldprice'=>'required|numeric',
+
             'description'=>'required',
             'photopath'=>'required|image|mimes:jpeg,png,jpg',
             'category_id'=>'required'
@@ -90,6 +92,7 @@ class ProductController extends Controller
             'name'=>'required',
             'stock'=>'required|numeric',
             'price'=>'required|numeric',
+            'oldprice'=>'required|numeric',
             'description'=>'required',
             'photopath'=>'required|image|mimes:jpeg,png,jpg',
             'category_id'=>'required'
